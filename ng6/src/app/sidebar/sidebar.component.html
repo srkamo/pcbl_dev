@@ -1,0 +1,29 @@
+<nav>
+  <ul>
+
+      <li>
+          <a routerLink="tables" [class.activated]="currentUrl == '/tables'">
+            <i class="material-icons">home</i>
+          </a>
+        </li>
+    <li>
+      <a routerLink="" [class.activated]="currentUrl == '/'">
+        <i class="material-icons">assessment</i>
+      </a>
+    </li>
+    <li>
+      <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
+        <i class="material-icons">library_books</i>
+      </a>
+    </li>
+
+    <li>
+        <a routerLink="posts" [class.activated]="currentUrl == ''">
+          <i class="material-icons">perm_media</i>
+        </a>
+      </li>
+   
+
+
+  </ul>
+</nav>

@@ -1,0 +1,57 @@
+<h1>Results</h1>
+
+
+
+<ul [@listStagger]="tables$" class="twoTables">
+
+
+
+  <li class="seasonRecords">
+
+    <table mat-table [dataSource]="dataSeasons" class="mat-elevation-z8 seasonLine">
+
+      <ng-container matColumnDef="season">
+        <th mat-header-cell *matHeaderCellDef> Season </th>
+        <td mat-cell *matCellDef="let element"> {{element.season}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="record">
+        <th mat-header-cell *matHeaderCellDef> Record </th>
+        <td mat-cell *matCellDef="let element"> {{element.record}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="seasonColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: seasonColumns;"></tr>
+
+    </table>
+  </li>
+  <li class="last3">
+
+      <table mat-table [dataSource]="dataLast3" class="mat-elevation-z8 last3Table">
+  
+        <ng-container matColumnDef="opponent">
+          <th mat-header-cell *matHeaderCellDef> Game </th>
+          <td mat-cell *matCellDef="let element"> {{element.opponent}} </td>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef> Score </th>
+          <td mat-cell *matCellDef="let element"> {{element.score}} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="last3Columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: last3Columns;"></tr>
+  
+      </table>
+    </li>
+
+
+</ul>
+
+<!-- <ul [@listStagger]="tables$">
+
+ 
+</ul> -->
+
