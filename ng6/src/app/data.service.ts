@@ -20,5 +20,9 @@ export class DataService {
     return this.http.get('https://jsonplaceholder.typicode.com/posts')
   }
 
+  getSeasons(){
+    return this.http.get('http://localhost:8888/api/viewAllSeason')
+  }
+
 
 }

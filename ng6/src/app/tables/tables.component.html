@@ -54,4 +54,30 @@
 
  
 </ul> -->
-
+<ul><li>
+<mat-table class="mat-elevation-z8" [dataSource]="tables$">
+  
+    <ng-container matColumnDef="id">
+        <div *matHeaderCellDef>#</div>
+        <div *matCellDef="let element">{{element.id}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="season">
+        <div *matHeaderCellDef>Description</div>
+        <div class="description-cell"
+                  *matCellDef="let element">{{element.season}}</div>
+    </ng-container>
+  
+    <ng-container matColumnDef="year">
+        <div *matHeaderCellDef>Duration</div>
+        <div class="duration-cell"
+                  *matCellDef="let element">{{element.year}}</div>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="seasonCol"></mat-header-row>
+    
+    <mat-row *matRowDef="let row; columns: seasonCol"></mat-row>
+    
+</mat-table>
+</li>
+</ul>

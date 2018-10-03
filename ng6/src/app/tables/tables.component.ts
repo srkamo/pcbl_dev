@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
-
+import { DataService } from '../data.service';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+}
+
+export interface SeasonElement {
+  season: string;
+  record: string;
 }
 
 export interface SeasonElement {
@@ -98,9 +103,15 @@ export class TablesComponent implements OnInit {
   last3Columns: string[] = ['opponent', 'score'];
   dataLast3 = LAST3_DATA;
 
-  constructor() { }
+  seasonCol: string[] = ['id', 'season', 'year'];
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getSeasons().subscribe(
+      data => this.tables$ = data 
+      
+    );
   }
 
 }
