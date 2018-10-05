@@ -6,8 +6,13 @@ import { PostsComponent } from './posts/posts.component';
 import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes = [
+
   {
     path: '',
+    component: TablesComponent
+  },
+  {
+    path: 'users',
     component: UsersComponent
   },
   {
@@ -18,11 +23,7 @@ const routes: Routes = [
     path: 'posts',
     component: PostsComponent
   },
-  {
-    path: 'tables',
-    component: TablesComponent
-  },
-
+ 
 ];
 
 @NgModule({
