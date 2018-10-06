@@ -21,7 +21,7 @@ export class DataService {
   }
 
   getSeasons(){
-    return this.http.get('http://localhost:8888/api/viewAllSeason')
+    //return this.http.get('http://localhost:8888/api/viewAllSeason')
   }
 
 

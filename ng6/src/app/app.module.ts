@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TablesComponent } from './tables/tables.component';
 
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule, MatSortModule, MatFormFieldModule} from '@angular/material';
+import {MatInputModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -30,6 +32,11 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

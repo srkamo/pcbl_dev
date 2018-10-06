@@ -1,6 +1,6 @@
-<h1>Users</h1>
+<h1>Stats</h1>
 
-<ul [@listStagger]="users$">
+<!-- <ul [@listStagger]="users$">
   <li *ngFor="let user of users$">
     <a routerLink="/details/{{user.id}}">{{ user.name }}</a>
 
@@ -9,4 +9,42 @@
       <li><a href="http://{{ user.website }}">{{ user.website }}</a></li>
     </ul>
   </li>
-</ul>
+</ul> -->
+<ul [@listStagger]="users$">
+  <li> 
+      <mat-form-field>
+        
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" >
+        </mat-form-field>
+        
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> Weight </th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+  </li>
+</ul> 
