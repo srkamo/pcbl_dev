@@ -15,7 +15,7 @@ import { TablesComponent } from './tables/tables.component';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, MatSortModule, MatFormFieldModule} from '@angular/material';
-import {MatInputModule } from '@angular/material'
+import {MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [

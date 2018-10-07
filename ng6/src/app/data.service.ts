@@ -21,8 +21,14 @@ export class DataService {
   }
 
   getSeasons(){
-    //return this.http.get('http://localhost:8888/api/viewAllSeason')
+    return this.http.get('http://localhost:8888/api/viewAllSeason')
   }
 
+  getCareerBattingStats(){
+    return this.http.get('http://localhost:8888/api/viewCareerStatsAllPlayer')
+  }
 
+  getCareerPitchingStats(){
+    return this.http.get('http://localhost:8888/api/viewCareerPitchingStatsAllPlayer')
+  }
 }

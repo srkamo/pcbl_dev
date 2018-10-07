@@ -103,15 +103,19 @@ export class TablesComponent implements OnInit {
   last3Columns: string[] = ['opponent', 'score'];
   dataLast3 = LAST3_DATA;
 
-  seasonCol: string[] = ['id', 'season', 'year'];
+  seasonCol: string[] = [ 'season', 'record'];
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    // this.data.getSeasons().subscribe(
-    //   data => this.tables$ = data 
+    this.data.getSeasons().subscribe(
+      data => this.tables$ = data 
       
-    // );
+    );
+  }
+
+  onClick(){
+    console.log('yo')
   }
 
 }

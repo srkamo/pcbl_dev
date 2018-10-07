@@ -1,4 +1,4 @@
-<h1>Results</h1>
+<h1>Home</h1>
 
 
 
@@ -6,23 +6,23 @@
 
 
 
-  <li class="seasonRecords">
+  <li class="seasonRecords" >
 
-    <table mat-table [dataSource]="dataSeasons" class="mat-elevation-z8 seasonLine">
+    <table mat-table class="mat-elevation-z8 seasonLine" [dataSource]="tables$">
+
 
       <ng-container matColumnDef="season">
         <th mat-header-cell *matHeaderCellDef> Season </th>
-        <td mat-cell *matCellDef="let element"> {{element.season}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.season}} {{element.year}} </td>
       </ng-container>
-
 
       <ng-container matColumnDef="record">
         <th mat-header-cell *matHeaderCellDef> Record </th>
-        <td mat-cell *matCellDef="let element"> {{element.record}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.wins}}-{{element.losses}}-{{element.ties}}  </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="seasonColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: seasonColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="seasonCol"></tr>
+      <tr mat-row *matRowDef="let row; columns: seasonCol;"></tr>
 
     </table>
   </li>
@@ -43,33 +43,6 @@
 
       <tr mat-header-row *matHeaderRowDef="last3Columns"></tr>
       <tr mat-row *matRowDef="let row; columns: last3Columns;"></tr>
-
-    </table>
-  </li>
-</ul>
-
-
-<ul>
-  <li>
-    <table mat-table class="mat-elevation-z8 seasonLine" [dataSource]="tables$">
-
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> # </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="season">
-        <th mat-header-cell *matHeaderCellDef> Season </th>
-        <td mat-cell *matCellDef="let element"> {{element.season}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="year">
-        <th mat-header-cell *matHeaderCellDef> year </th>
-        <td mat-cell *matCellDef="let element"> {{element.year}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="seasonCol"></tr>
-      <tr mat-row *matRowDef="let row; columns: seasonCol;"></tr>
 
     </table>
   </li>

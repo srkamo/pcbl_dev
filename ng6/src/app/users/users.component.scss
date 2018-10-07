@@ -7,10 +7,16 @@ table {
     width: 100%;
   }
   
-  td, th {
-    width: 25%;
-  }
+  // td, th {
+  //   width: 25%;
+  // }
 
   .search{
       outline-style: solid;
+  }
+
+  form{
+    width: 70%;
+    text-align: center;
+    display: flex;
   }
