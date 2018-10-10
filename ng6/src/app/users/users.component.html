@@ -12,7 +12,9 @@
   <input type="radio" (click)="isOn= true; checked = true"  name="chart"> Pitching
 </form>
 
-<ul [@listStagger]="users$" *ngIf="!isOn">
+
+<!-- [@listStagger]="users$" -->
+<ul  *ngIf="!isOn">
   <li> 
       <mat-form-field>
         
@@ -123,7 +125,9 @@
   </li>
 </ul> 
 
-<ul [@listStagger]="users$" *ngIf="isOn"> 
+<!-- [@listStagger]="users$" -->
+
+<ul  *ngIf="isOn"> 
   <li> 
       <mat-form-field>
         
