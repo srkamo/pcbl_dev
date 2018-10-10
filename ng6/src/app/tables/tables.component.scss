@@ -23,6 +23,9 @@
 .twoTables{
   display: flex;
   vertical-align: top; 
+  position: absolute;
+  top: 30%;
+  width: 80%;
 }
 
 .last3{
@@ -33,4 +36,8 @@
 
 .last3Table{
   width : 100%;
+}
+
+ul{
+  
 }

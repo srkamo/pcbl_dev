@@ -3,23 +3,27 @@
 
       <li>
           <a routerLink="" [class.activated]="currentUrl == '/'">
-            <i class="material-icons">home</i>
+            <!-- <i class="material-icons">home</i> -->
+            HOME
           </a>
         </li>
     <li>
       <a routerLink="users" [class.activated]="currentUrl == '/users'">
-        <i class="material-icons">assessment</i>
+        <!-- <i class="material-icons">assessment</i> -->
+        CAREER STATS
       </a>
     </li>
     <li>
       <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
-        <i class="material-icons">library_books</i>
+        <!-- <i class="material-icons">library_books</i> -->
+        SINGLE GAME STATS
       </a>
     </li>
 
     <li>
         <a routerLink="posts" [class.activated]="currentUrl == ''">
-          <i class="material-icons">perm_media</i>
+          <!-- <i class="material-icons">perm_media</i> -->
+          GALLERY
         </a>
       </li>
    
@@ -27,3 +31,33 @@
 
   </ul>
 </nav>
+
+<!-- <nav>
+ 
+  <ul>
+    <li>
+          <a routerLink="" [class.activated]="currentUrl == '/'">
+           HOME
+          </a>
+        </li>
+   
+        <li>
+      <a routerLink="users" [class.activated]="currentUrl == '/users'">
+        ALL TIME
+      </a>
+    </li>
+    
+    <li>
+      <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
+       SEASON
+      </a>
+    </li>
+    
+    <li>
+      <a routerLink="posts" [class.activated]="currentUrl == ''">
+         GALLERY
+      </a>
+      </li>
+      </ul>
+  
+</nav> -->
