@@ -4,28 +4,6 @@ import { Observable } from 'rxjs';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
-// export interface ReportElement {
-//   Name: string;
-//   G: number;
-//   AB: number;
-//   H: number;
-//   B2: number;
-//   B3: number;
-//   HR: number;
-//   RBI: number;
-//   BB: number;
-//   HBP: number;
-//   SAC: number;
-//   K: number;
-//   SB: number;
-//   PB: number;
-//   CS: number;
-//   AVG: number;
-//   OBP: number;
-//   SLG: number;
-//   R: number;
-   
-// }
 
 
 
@@ -82,12 +60,11 @@ export class UsersComponent implements OnInit {
     this.data.getCareerBattingStats().subscribe(
       data => this.careerBattingStats$ = data 
       
-    );
-
-    this.data.getCareerBattingStats().subscribe(
-      data => this.careerPitchingStats$ = data 
       
     );
+    
+    console.log("crr bt sts: " + this.data.getCareerPitchingStats()[0].length);
+   
   }
 
   applyFilter(filterValue: string) {

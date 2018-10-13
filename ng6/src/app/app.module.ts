@@ -17,6 +17,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, MatSortModule, MatFormFieldModule} from '@angular/material';
 import {MatInputModule } from '@angular/material';
 
+import { MatProgressSpinnerModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,7 @@ import {MatInputModule } from '@angular/material';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
 
   ],
   providers: [],
