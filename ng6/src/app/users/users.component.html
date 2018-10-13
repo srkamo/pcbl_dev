@@ -16,10 +16,6 @@
 <!-- [@listStagger]="users$" -->
 <ul  *ngIf="!isOn">
   <li> 
-      <mat-form-field>
-        
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" >
-        </mat-form-field>
         
         <table mat-table [dataSource]="careerBattingStats$[0]" class="mat-elevation-z8">
         
@@ -129,11 +125,6 @@
 
 <ul  *ngIf="isOn"> 
   <li> 
-      <mat-form-field>
-        
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" >
-        </mat-form-field>
-        
         <table mat-table [dataSource]="careerBattingStats$[1]" class="mat-elevation-z8">
         <!-- 'Name', 'G', 'W', 'L', 'T', 'S', 'IP', 'ER', 'R', 'K', 'BB', 'HBP', 'H', 'WP', 'SB', 'PO', 'ERA', 'WHIP' -->
          

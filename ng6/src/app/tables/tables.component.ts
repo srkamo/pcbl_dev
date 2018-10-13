@@ -108,7 +108,7 @@ export class TablesComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.getSeasons().subscribe(
+    this.data.getAllSeasonsAndRecentGames().subscribe(
       data => this.tables$ = data 
       
     );

@@ -15,7 +15,7 @@
 
 ul{
   position: absolute;
-  top: 30%;
+  top: 60%;
 }
 table {
   width: 100%;
@@ -23,4 +23,17 @@ table {
 
 th.mat-sort-header-sorted {
   color: black;
+}
+
+.dropdown{
+  top: 30%;
+}
+
+.stats{
+  width:80%;
+}
+
+.selected{
+  left:45%;
+  top:34%;
 }

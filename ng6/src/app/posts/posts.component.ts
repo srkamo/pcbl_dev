@@ -2,11 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../data.service';
 import { merge, Observable, of as observableOf } from 'rxjs';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatOption } from '@angular/material';
 
 
 
-
+export interface Food {
+  value: string;
+  viewValue: string;
+}
 
 export interface LastThree {
   opponent: string;
@@ -83,13 +86,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class PostsComponent implements OnInit {
 
+  selectedValue: string;
+  public foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 
   posts$: Object;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   careerBattingColumns: string[] = ['Name', 'G', 'AB', 'R', 'H', '2B', '3B', 'HR', 'RBI', 'BB', 'HBP', 'SAC', 'K', 'SB', 'PB', 'CS', 'AVG', 'OBP', 'SLG'];
+  careerPitchingColumns: string[] = ['Name', 'G', 'W', 'L', 'T', 'S', 'IP', 'ER', 'R', 'K', 'BB', 'HBP', 'H', 'WP', 'SB', 'PO', 'ERA', 'WHIP' ];
+
   //dataSource = new MatTableDataSource(ELEMENT_DATA);
   datasource = null;
   bsBllSts: BaseballStats[];
+  selected = "";
   @ViewChild(MatSort) sort: MatSort;
 
   last3Columns: string[] = ['opponent', 'score'];
@@ -102,42 +113,47 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.data.getCareerBattingStats().subscribe(
+    this.data.getStatsBySeason(0).subscribe(
       data => this.posts$ = data
     );
-    
-    console.log("posts$: " + this.posts$);
+     
+    //console.log("posts$: " + this.posts$);
 
-    for(let i=0; i < this.posts$[0].length; i++){
-      var stateLine = <BaseballStats>{};
-     // declare const stateLine: BaseballStats;
-      stateLine.FirstName = this.posts$[0][i].firstName;
-      stateLine.LastName = this.posts$[0][i].lastName;
-      stateLine.G = this.posts$[0][i].games;
-      stateLine.AB = this.posts$[0][i].atBats;
-      stateLine.R = this.posts$[0][i].runs;
-      stateLine.H = this.posts$[0][i].singles;
-      stateLine.B2 = this.posts$[0][i].doubles;
-      stateLine.B3 = this.posts$[0][i].triples;
-      stateLine.HR = this.posts$[0][i].homeRuns;
-      stateLine.RBI = this.posts$[0][i].rbis;
-      stateLine.BB = this.posts$[0][i].walks;
-      stateLine.HBP = this.posts$[0][i].hitByPitch;
-      stateLine.SAC = this.posts$[0][i].sacrifices;
-      stateLine.K = this.posts$[0][i].strikeOuts;
-      stateLine.SB = this.posts$[0][i].stolenBases;
-      stateLine.PB = this.posts$[0][i].passedBalls;
-      stateLine.CS = this.posts$[0][i].caughtStealing;
-      stateLine.AVG = this.posts$[0][i].battingAverage;
-      stateLine.OBP = this.posts$[0][i].onBasePercentage;
-      stateLine.SLG = this.posts$[0][i].sluggingAverage;
-      this.bsBllSts.push(stateLine);
-    }
+    // for(let i=0; i < this.posts$[0].length; i++){
+    //   var stateLine = <BaseballStats>{};
+    //  // declare const stateLine: BaseballStats;
+    //   stateLine.FirstName = this.posts$[0][i].firstName;
+    //   stateLine.LastName = this.posts$[0][i].lastName;
+    //   stateLine.G = this.posts$[0][i].games;
+    //   stateLine.AB = this.posts$[0][i].atBats;
+    //   stateLine.R = this.posts$[0][i].runs;
+    //   stateLine.H = this.posts$[0][i].singles;
+    //   stateLine.B2 = this.posts$[0][i].doubles;
+    //   stateLine.B3 = this.posts$[0][i].triples;
+    //   stateLine.HR = this.posts$[0][i].homeRuns;
+    //   stateLine.RBI = this.posts$[0][i].rbis;
+    //   stateLine.BB = this.posts$[0][i].walks;
+    //   stateLine.HBP = this.posts$[0][i].hitByPitch;
+    //   stateLine.SAC = this.posts$[0][i].sacrifices;
+    //   stateLine.K = this.posts$[0][i].strikeOuts;
+    //   stateLine.SB = this.posts$[0][i].stolenBases;
+    //   stateLine.PB = this.posts$[0][i].passedBalls;
+    //   stateLine.CS = this.posts$[0][i].caughtStealing;
+    //   stateLine.AVG = this.posts$[0][i].battingAverage;
+    //   stateLine.OBP = this.posts$[0][i].onBasePercentage;
+    //   stateLine.SLG = this.posts$[0][i].sluggingAverage;
+    //   this.bsBllSts.push(stateLine);
+    // }
 
-    this.datasource = new MatTableDataSource(this.bsBllSts);
-    this.datasource.sort = this.sort;
+    // this.datasource = new MatTableDataSource(this.bsBllSts);
+    // this.datasource.sort = this.sort;
   }
   
-
+  callBack(id){
+    console.log("call back " + id);
+    this.data.getStatsBySeason(id).subscribe(
+      data => this.posts$ = data
+    );
+  }
 }
 

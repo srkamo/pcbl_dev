@@ -25,6 +25,11 @@ export class DataService {
     return this.http.get('http://qa.pcblroyals.com:8888/api/viewAllSeason')
   }
 
+  getAllSeasonsAndRecentGames(){
+    //return this.http.get('http://localhost:8888/api/viewAllSeason')
+    return this.http.get('http://qa.pcblroyals.com:8888/api/getAllSeasonsAndRecentGames')
+  }
+
   getCareerBattingStats(){
    // return this.http.get('http://localhost:8888/api/viewCareerStatsAllPlayer')
     return this.http.get('http://qa.pcblroyals.com:8888/api/viewCareerStatsAllPlayer')
@@ -33,5 +38,9 @@ export class DataService {
   getCareerPitchingStats(){
     //return this.http.get('http://localhost:8888/api/viewCareerPitchingStatsAllPlayer')
     return this.http.get('http://qa.pcblroyals.com:8888/api/viewCareerPitchingStatsAllPlayer')
+  }
+
+  getStatsBySeason(id){
+    return this.http.get('http://qa.pcblroyals.com:8888/api/getStatsBySeason/'+id)
   }
 }
