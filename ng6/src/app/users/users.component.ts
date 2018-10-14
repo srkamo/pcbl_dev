@@ -62,30 +62,27 @@ export class UsersComponent implements OnInit {
       
       
     );
-    
-    console.log("crr bt sts: " + this.data.getCareerPitchingStats()[0].length);
    
   }
 
-  applyFilter(filterValue: string) {
-   // this.dataSource.filter = filterValue.trim().toLowerCase();
+  // applyFilter(filterValue: string) {
+  //  // this.dataSource.filter = filterValue.trim().toLowerCase();
     
-  }
+  // }
 
-  loadBatting(){
-    
-    this.data.getCareerBattingStats().subscribe(
-      data => this.careerBattingStats$ = data 
+  // loadBatting(){
+  //   this.data.getCareerBattingStats().subscribe(
+  //     data => this.careerBattingStats$ = data 
       
-    );
-  }
+  //   );
+  // }
 
-  loadPitching(){
+  // loadPitching(){
     
-    this.data.getCareerBattingStats().subscribe(
-      data => this.careerPitchingStats$ = data 
-    );
-  }
+  //   this.data.getCareerBattingStats().subscribe(
+  //     data => this.careerPitchingStats$ = data 
+  //   );
+  // }
 
   
 }
