@@ -115,6 +115,13 @@ export class PostsComponent implements OnInit {
 
     this.data.getStatsBySeason(0).subscribe(
       data => this.posts$ = data
+      /*
+       this.data.getStatsBySeason(0).subscribe(
+        function(data) {
+        this.posts$ = data;
+        this.dataSource = new MatTableDataSource(this.posts$);
+      }
+      */
     );
      
     //console.log("posts$: " + this.posts$);
