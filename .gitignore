@@ -65,3 +65,5 @@ typings/
 *.iws
 *.iml
 *.ipr
+
+/ng6/node_modules
