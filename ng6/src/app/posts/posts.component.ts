@@ -5,17 +5,6 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
 import { MatPaginator, MatSort, MatTableDataSource, MatOption } from '@angular/material';
 
 
-
-export interface Food {
-  value: string;
-  viewValue: string;
-}
-
-export interface LastThree {
-  opponent: string;
-  score: string;
-}
-
 export interface BaseballStats{
   FirstName: string; LastName: string; G: string; AB: string; R: string; H: string; B2: string; 
   B3: string; HR: string; RBI: string; BB: string; HBP: string; SAC: string; 
@@ -29,14 +18,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
-const LAST3_DATA: LastThree[] = [
-  { opponent: 'at Dodos', score: '5-3' },
-  { opponent: 'vs Smokies', score: '1-0' },
-  { opponent: 'vs Bats', score: '6-8' },
-
-];
-
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -84,76 +65,64 @@ const ELEMENT_DATA: PeriodicElement[] = [
   ]
 })
 
+
 export class PostsComponent implements OnInit {
 
-  selectedValue: string;
-  public foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  sampleBsBll = [{"player_id":247,"firstName":"Phil","lastName":"Acosta","numGames":13,"atBats":51,"singles":14,"doubles":2,"triples":0,"homeRuns":0,"walks":10,"hitByPitch":1,"sacrifices":0,"runs":10,"rbis":7,"stolenBases":4,"passedBalls":5,"caughtStealing":2,"strikeOuts":6,"battingAverage":0.275,"onBasePercentage":0.403,"sluggingAverage":0.353}
+  ,{"player_id":201,"firstName":"Jason","lastName":"Bolding","numGames":9,"atBats":40,"singles":8,"doubles":3,"triples":0,"homeRuns":0,"walks":2,"hitByPitch":0,"sacrifices":0,"runs":10,"rbis":13,"stolenBases":3,"passedBalls":1,"caughtStealing":0,"strikeOuts":7,"battingAverage":0.2,"onBasePercentage":0.238,"sluggingAverage":0.35}
+  ,{"player_id":163,"firstName":"Ryan","lastName":"Elliott","numGames":10,"atBats":44,"singles":14,"doubles":5,"triples":0,"homeRuns":0,"walks":2,"hitByPitch":2,"sacrifices":0,"runs":15,"rbis":10,"stolenBases":0,"passedBalls":2,"caughtStealing":1,"strikeOuts":2,"battingAverage":0.318,"onBasePercentage":0.375,"sluggingAverage":0.545}
+  ,{"player_id":252,"firstName":"Lee","lastName":"Ellis","numGames":1,"atBats":2,"singles":0,"doubles":0,"triples":0,"homeRuns":0,"walks":3,"hitByPitch":0,"sacrifices":0,"runs":1,"rbis":0,"stolenBases":0,"passedBalls":0,"caughtStealing":0,"strikeOuts":1,"battingAverage":0.0,"onBasePercentage":0.6,"sluggingAverage":0.0},
+  {"player_id":246,"firstName":"Al","lastName":"Garcia","numGames":2,"atBats":7,"singles":1,"doubles":0,"triples":0,"homeRuns":0,"walks":0,"hitByPitch":2,"sacrifices":0,"runs":1,"rbis":3,"stolenBases":0,"passedBalls":0,"caughtStealing":0,"strikeOuts":3,"battingAverage":0.143,"onBasePercentage":0.333,"sluggingAverage":0.143}];
 
+  selectedValue: string;
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   posts$: Object;
+  batting = new MatTableDataSource(this.sampleBsBll);
+  pitching;
+  dropDown;
   careerBattingColumns: string[] = ['Name', 'G', 'AB', 'R', 'H', '2B', '3B', 'HR', 'RBI', 'BB', 'HBP', 'SAC', 'K', 'SB', 'PB', 'CS', 'AVG', 'OBP', 'SLG'];
+  statTest: string[] = ['Name', 'G', 'AB', 'R'];
   careerPitchingColumns: string[] = ['Name', 'G', 'W', 'L', 'T', 'S', 'IP', 'ER', 'R', 'K', 'BB', 'HBP', 'H', 'WP', 'SB', 'PO', 'ERA', 'WHIP' ];
 
-  //dataSource = new MatTableDataSource(ELEMENT_DATA);
-  datasource = null;
-  bsBllSts: BaseballStats[];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
   selected = "";
   @ViewChild(MatSort) sort: MatSort;
 
-  last3Columns: string[] = ['opponent', 'score'];
-  dataLast3 = LAST3_DATA;
   constructor(private data: DataService) { }
-
-  // ngOnInit() {
-  //   this.dataSource.sort = this.sort;
-  // }
 
   ngOnInit() {
 
     this.data.getStatsBySeason(0).subscribe(
-      data => this.posts$ = data
+      data => {this.posts$ = data; 
+        this.dropDown = this.posts$[0];
+       // this.dataSource = new MatTableDataSource(data);
+      //  this.batting = new MatTableDataSource(this.sampleBsBll);
+       //this.pitching = new MatTableDataSource(this.posts$[2]);
+      
+      //  this.pitching.sort = this.sort;
+       //console.log("testPost: " + this.testPost);
+        }
     );
-     
-    //console.log("posts$: " + this.posts$);
-
-    // for(let i=0; i < this.posts$[0].length; i++){
-    //   var stateLine = <BaseballStats>{};
-    //  // declare const stateLine: BaseballStats;
-    //   stateLine.FirstName = this.posts$[0][i].firstName;
-    //   stateLine.LastName = this.posts$[0][i].lastName;
-    //   stateLine.G = this.posts$[0][i].games;
-    //   stateLine.AB = this.posts$[0][i].atBats;
-    //   stateLine.R = this.posts$[0][i].runs;
-    //   stateLine.H = this.posts$[0][i].singles;
-    //   stateLine.B2 = this.posts$[0][i].doubles;
-    //   stateLine.B3 = this.posts$[0][i].triples;
-    //   stateLine.HR = this.posts$[0][i].homeRuns;
-    //   stateLine.RBI = this.posts$[0][i].rbis;
-    //   stateLine.BB = this.posts$[0][i].walks;
-    //   stateLine.HBP = this.posts$[0][i].hitByPitch;
-    //   stateLine.SAC = this.posts$[0][i].sacrifices;
-    //   stateLine.K = this.posts$[0][i].strikeOuts;
-    //   stateLine.SB = this.posts$[0][i].stolenBases;
-    //   stateLine.PB = this.posts$[0][i].passedBalls;
-    //   stateLine.CS = this.posts$[0][i].caughtStealing;
-    //   stateLine.AVG = this.posts$[0][i].battingAverage;
-    //   stateLine.OBP = this.posts$[0][i].onBasePercentage;
-    //   stateLine.SLG = this.posts$[0][i].sluggingAverage;
-    //   this.bsBllSts.push(stateLine);
-    // }
-
-    // this.datasource = new MatTableDataSource(this.bsBllSts);
-    // this.datasource.sort = this.sort;
+    this.batting.sort = this.sort;
   }
   
+  
+
   callBack(id){
     console.log("call back " + id);
     this.data.getStatsBySeason(id).subscribe(
-      data => this.posts$ = data
+      data => {this.posts$ = data; 
+        // this.dataSource = new MatTableDataSource(data);
+      
+       this.batting = new MatTableDataSource(this.posts$[1]);
+      //  this.pitching = new MatTableDataSource(this.posts$[2]);
+        //console.log("testPost: " + this.testPost);
+         }
     );
+    this.batting.sort = this.sort;
+   // this.pitching.sort = this.sort;
   }
 }
 
