@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +44,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    // FormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
